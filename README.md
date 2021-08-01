@@ -8,7 +8,7 @@ The repo uses:
 - [ ] Records
 - [ ] Value types
 
-TODO:  
+Todo's:  
 - [x] Either a b = Left a | Right b  
 - [ ] Maybe a = Just a | Nothing  
 - [ ] Lenses  
@@ -19,5 +19,5 @@ TODO:
 - [ ] Semigroups  
 
 Haskell books I read:
-- [] The Haskell Book
-- [] Haskell in Depth
+- [ ] The Haskell Book
+- [ ] Haskell in Depth

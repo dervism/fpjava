@@ -17,3 +17,6 @@ TODO:
 - [ ] Monoids  
 - [ ] Semigroups  
 
+Haskell books I read:
+- [] The Haskell Book
+- [] Haskell in Depth

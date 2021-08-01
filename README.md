@@ -15,8 +15,10 @@ Todo's:
 - [ ] Prisms  
 - [ ] Traversables  
 - [ ] Monads  
+- [ ] Functors
 - [ ] Monoids  
 - [ ] Semigroups  
+- [ ] Partial functions
 
 Haskell books I read:
 - [ ] The Haskell Book

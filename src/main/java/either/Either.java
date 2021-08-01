@@ -3,8 +3,8 @@ package either;
 /**
  * A minimal version of Either built using a sealed interface.
  *
- * @param <A>
- * @param <B>
+ * @param <A> The Left type. By convention this represents an error or a failure.
+ * @param <B> The Right type. By convention this represents a value.
  */
 
 public sealed interface Either<A, B> permits Left, Right {

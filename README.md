@@ -5,6 +5,7 @@ This repo serves as a place to practice functional programming in Java and to un
 The repo uses:
 - [x] Sealed classes and interfaces
 - [ ] Pattern matching (instanceof)
+- [ ] Records
 - [ ] Value types
 
 TODO:  

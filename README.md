@@ -20,6 +20,6 @@ Todo's:
 - [ ] Semigroups  
 - [ ] Partial functions
 
-Haskell books I read:
+Haskell books I read:  
 - [ ] The Haskell Book
 - [ ] Haskell in Depth

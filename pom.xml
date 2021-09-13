@@ -9,7 +9,7 @@
     <version>0.1</version>
 
     <properties>
-        <jdkVersion>16</jdkVersion>
+        <jdkVersion>17</jdkVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

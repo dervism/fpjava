@@ -1,11 +1,6 @@
 package either;
 
-public final class Right<A, B> implements Either<A, B> {
-    private final B b;
-
-    public Right(B right) {
-        this.b = right;
-    }
+public final record Right<A, B>(B b) implements Either<A, B> {
 
     @Override
     public EitherSide side() {

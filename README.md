@@ -5,12 +5,12 @@ This repo serves as a place to practice functional programming in Java and to un
 The repo uses:
 - [x] Sealed classes and interfaces
 - [ ] Pattern matching (instanceof)
-- [ ] Records
+- [x] Records
 - [ ] Value types
 
 Todo's:  
 - [x] Either a b = Left a | Right b  
-- [ ] Maybe a = Just a | Nothing  
+- [x] Maybe a = Just a | Nothing  
 - [ ] Lenses  
 - [ ] Prisms  
 - [ ] Traversables  

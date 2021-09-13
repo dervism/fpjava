@@ -11,9 +11,4 @@ public record Just<A>(A a) implements Maybe<A> {
     public A get() {
         return a;
     }
-
-    @Override
-    public A orElse(A anotherA) {
-        return anotherA;
-    }
 }

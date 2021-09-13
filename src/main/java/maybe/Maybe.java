@@ -8,23 +8,25 @@ public sealed interface Maybe<A> permits Just, Nothing {
 
     A get();
 
-    A orElse(A a);
+    default A orElse(A a) {
+        if (isNothing()) return a;
+        return get();
+    }
 
     default <R> R andThen(Function<A, R> then) {
         return then.apply(get());
     }
 
-    @SuppressWarnings("unchecked")
     static <X> Maybe<X> maybe(X a) {
-        return a != null ? just(a) : (Maybe<X>) nothing();
+        return a != null ? just(a) : nothing();
     }
 
     static <X> Just<X> just(X a) {
         return new Just<>(a);
     }
 
-    static Nothing nothing() {
-        return new Nothing();
+    static <X> Nothing<X> nothing() {
+        return new Nothing<>();
     }
 
 }

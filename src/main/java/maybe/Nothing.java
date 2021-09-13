@@ -1,6 +1,6 @@
 package maybe;
 
-public final class Nothing implements Maybe<Object> {
+public final class Nothing<A> implements Maybe<A> {
 
     @Override
     public boolean isNothing() {
@@ -8,12 +8,7 @@ public final class Nothing implements Maybe<Object> {
     }
 
     @Override
-    public Object get() {
-        return null;
-    }
-
-    @Override
-    public Object orElse(Object nothing) {
+    public A get() {
         return null;
     }
 }

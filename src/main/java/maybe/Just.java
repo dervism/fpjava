@@ -1,14 +1,9 @@
 package maybe;
 
-public record Just<A>(A a) implements Maybe<A> {
+public record Just<A>(A get) implements Maybe<A> {
 
     @Override
     public boolean isNothing() {
         return false;
-    }
-
-    @Override
-    public A get() {
-        return a;
     }
 }

@@ -1,6 +1,6 @@
-package maybe;
+package monads.maybe;
 
-public final class Nothing<A> implements Maybe<A> {
+public record Nothing<A>() implements Maybe<A> {
 
     @Override
     public boolean isNothing() {
@@ -8,7 +8,7 @@ public final class Nothing<A> implements Maybe<A> {
     }
 
     @Override
-    public A get() {
+    public A value() {
         return null;
     }
 }

@@ -1,6 +1,6 @@
-package maybe;
+package monads.maybe;
 
-public record Just<A>(A get) implements Maybe<A> {
+public record Just<A>(A value) implements Maybe<A> {
 
     @Override
     public boolean isNothing() {

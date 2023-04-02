@@ -1,12 +1,11 @@
 # Functional programming in Java
 
-This repo serves as a place to practice functional programming in Java and to understand functional programming by building minimal versions of known Haskell-concepts in Java. It exists multiple FP-libraries for Java, but building these concepts myself help me learn them better. That said, Java is moving forward and is adopting more and more FP features, so using the latest features of Java is important (... and avoiding abstracts as much as possible).
+This repo serves as a place to practice functional programming in Java and to understand functional programming by building minimal versions of known Haskell-concepts in Java. Multiple FP-libraries exist for Java, but building these concepts myself help me learn them better.
 
 The repo uses:
 - [x] Sealed classes and interfaces
 - [x] Records
 - [x] Pattern matching on sealed classes and interfaces (switch)
-- [ ] Pattern matching (instanceof)
 - [ ] Value types
 
 Todo's:  
@@ -16,7 +15,8 @@ Todo's:
 - [ ] Prisms  
 - [ ] Traversables  
 - [ ] Monads  
-- [ ] Functors
+- [x] Applicatives
+- [x] Functors
 - [ ] Monoids  
 - [ ] Semigroups  
 - [ ] Partial functions
@@ -24,3 +24,6 @@ Todo's:
 Haskell books I read:  
 - [ ] The Haskell Book
 - [ ] Haskell in Depth
+
+Video's
+- Josh Block about ?super vs ?extend (wildcards): https://youtu.be/V1vQf4qyMXg?t=1497

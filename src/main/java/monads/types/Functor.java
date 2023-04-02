@@ -14,15 +14,15 @@ import java.util.function.Function;
  * @param <A>
  */
 
-public interface Functor<A> {
+public interface Functor<A, F extends Functor<?, F>> {
 
     /**
      * A Functor is any type that can act as a generic container.
      *
-     * @param mapper A transformation function from an <code>A</code> type to a <code>B</code> type
+     * @param fn A transformation function from an <code>A</code> type to a <code>B</code> type
      * @param <B> The target type to transform to
      * @return A new Functor containing type B
      */
-    <B> Functor<B> fmap(Function<? super A, ? extends B> mapper);
+    <B> Functor<B, F> fmap(Function<A, B> fn);
 
 }

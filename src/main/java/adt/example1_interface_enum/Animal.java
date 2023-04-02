@@ -1,8 +1,16 @@
 package adt.example1_interface_enum;
 
+/**
+ * Java 8 way of matching algebraic data types, before the improvements to switch case.
+ * Uses enums to make any object possible to match in switch statements.
+ */
+
 public interface Animal {
 
-    // An Animal can be one of two enum types:
+    /**
+     * When implementing a new type of Animal, add a
+     * new enum that represents it.
+     */
     enum cases {
         Cat, Dog;
         public static cases match(Animal test) {
@@ -20,6 +28,7 @@ public interface Animal {
             case Dog:
                 return "Dog = " + ((Dog) animal).woff();
 
+            // Note that we can't achieve exhaustive matching (during compile time)
             default:
                 throw new IllegalArgumentException("Unknown type");
         }

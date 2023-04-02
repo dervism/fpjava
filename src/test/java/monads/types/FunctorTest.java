@@ -1,5 +1,6 @@
 package monads.types;
 
+import monads.examples.functors.GenericFunctor;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
@@ -7,7 +8,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FunctorTest {
 
@@ -15,7 +16,7 @@ class FunctorTest {
     void fmap() {
         Function<String, String> reverse = s -> new StringBuilder(s).reverse().toString();
 
-        TestFunctor<List<String>> listFunctor = new TestFunctor<>(List.of("hello", "world"));
+        GenericFunctor<List<String>> listFunctor = new GenericFunctor<>(List.of("hello", "world"));
 
         var fmap = listFunctor
                 .fmap(x -> x.stream().map(String::toUpperCase).toList())
@@ -23,6 +24,6 @@ class FunctorTest {
                 .fmap(x -> x.flatMap(Collection::stream))
                 .fmap(Stream::toList);
 
-        System.out.println(fmap);
+        assertEquals("TestFunctor[a=[HELLO, WORLD, OLLEH, DLROW]]", fmap.toString());
     }
 }

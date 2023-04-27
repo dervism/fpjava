@@ -9,15 +9,16 @@ class EitherTest {
     @Test
     void either_returns_value_right() {
         int test = 11;
-        Either<String, Integer> e =
-                test <= 10 ? Either.left("Under ten.") : Either.right(11);
+        Either<String, Integer> e = test <= 10
+                                    ? Either.left("Under ten.")
+                                    : Either.right(11);
 
         boolean ok = switch (e) {
             case Left l -> false;
             case Right r -> true;
         };
 
-        assertTrue(ok);
+    assertTrue(ok);
     }
 
     @Test

@@ -1,6 +1,5 @@
 package monads.maybe;
 
-import monads.types.Monad;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -37,10 +36,8 @@ class MaybeTest {
     void maybe_returns_just_double() {
         Maybe<Double> dagpenger = dagpengeCalculator.apply(List.of(500_000, 450_000, 400_000));
 
-        String txt = "Du får ";
-
         String msg = switch ( dagpenger ) {
-            case Just<Double> j -> txt + j.value();
+            case Just<Double> j -> "Du får " + j.value();
             case Nothing<Double> n -> "Nada!";
         };
 

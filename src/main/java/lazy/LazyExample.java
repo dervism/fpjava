@@ -11,12 +11,12 @@ public class LazyExample {
     public static void main(String[] args) {
         int x = 1;
 
-        int temp = compute(5);
-        //var lazyTemp = Lazy.lazy(() -> compute(5));
+        //int temp = compute(5);
+        var lazyTemp = Lazy.lazy(() -> compute(5));
 
         System.out.println("Here.");
 
-        if  (x > 5 && temp > 10) {
+        if  (x > 5 && lazyTemp.value() > 10) {
             System.out.println("Result.");
         }
         else

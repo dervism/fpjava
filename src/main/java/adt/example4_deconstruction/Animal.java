@@ -5,6 +5,8 @@ public sealed interface Animal permits Cat, Dog {
     String name();
     int age();
 
+
+
     static String deconstruction(Animal animal) {
         return switch (animal) {
             case Cat(var n, var a) -> "Cat name = %s, age = %s".formatted(n, a);
@@ -13,19 +15,26 @@ public sealed interface Animal permits Cat, Dog {
         };
     }
 
+
+
+
     // Enhanced type checking:
     record Point(int i, int j) {}
     enum Color { RED, GREEN, BLUE; }
+
     static String enhancedTypes(Object obj) {
         return switch (obj) {
             case null     -> "null";
-            case String s -> "String";
+            case String s -> "String: " + s;
             case Color c  -> "Color: " + c.toString();
             case Point p  -> "Record class: " + p.toString();
             case int[] ia -> "Array of ints of length" + ia.length;
             default       -> "Something else";
         };
     }
+
+
+
 
     // Dominance of case labels:
     //  for a given value of the selector expression it is
@@ -35,9 +44,7 @@ public sealed interface Animal permits Cat, Dog {
         switch (obj) {
             case String s -> System.out.println("A string: " + s);
             case CharSequence cs -> System.out.println("A sequence of length " + cs.length());
-            default -> {
-                break;
-            }
+            default -> { }
         }
     }
 

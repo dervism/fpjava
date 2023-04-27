@@ -3,7 +3,7 @@ package functions;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class PartialFunctions {
+public class PartialPizzaFunctions {
 
     // Models a function for calculating number of Peppes pizza
     // needed for a javaBin meetup:

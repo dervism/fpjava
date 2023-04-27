@@ -1,35 +1,52 @@
 package functions;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class CurriedFunctions {
 
-    // Models a function for calculating number of Peppes pizza
-    // needed for a javaBin meetup:
-    //
-    // NumPeopleSignedUp a, NumExtra b => (a, b) -> (a * 0.66 / 3) + b
+    @FunctionalInterface
+    interface F4<A, B, C, D> {
+        Integer add(A a, B b, C c, D d);
+    }
 
-    interface DoubleFunction extends Function<Double, Double> {}
-    interface CurriedFunction extends Function<Double, DoubleFunction> {};
 
-    static DoubleFunction multiple66Percent = x -> x * 0.66;
+    static F4<Integer, Integer, Integer, Integer> sum =
+            (a, b, c, d) -> a + b + c + d;
 
-    // curried function
-    static CurriedFunction peoplePrPizza = a -> b -> a / b;
 
-    // curried function with and partially applied parameters
-    static CurriedFunction dividePeoplePrPizzaPeppes = a -> b -> peoplePrPizza.apply(a).apply(3d) + b;
+    static Function<Integer, Function<Integer, Function<Integer, Function<Integer, Integer>>>> withCurriedFn =
+            a -> b -> c -> d -> a + b + c + d;
 
-    // using a curried function in another function
-    static Function<Double, Double> peppes = multiple66Percent.andThen(a -> dividePeoplePrPizzaPeppes.apply(a).apply(1d));
 
-    // another way of using the curried function
-    static DoubleFunction curried = n -> dividePeoplePrPizzaPeppes.apply(multiple66Percent.apply(n)).apply(1d);
+    static BiFunction<Integer, Integer, Function<Integer, Function<Integer, Integer>>> withCurriedBiFn =
+            (a, b) -> c -> d -> a + b + c + d;
+
+
+    static BiFunction<Integer, Integer, BiFunction<Integer, Integer, Integer>> sum4 =
+            (a, b) -> (c, d) -> a + b + c + d;
+
 
     public static void main(String[] args) {
-        var numPizzas = peppes.apply(15d);
-        System.out.printf("You need %.1f pizza's.", numPizzas).println();
 
-        System.out.printf("You need %.1f curried pizza's.", curried.apply(15d));
+        System.out.println(
+                sum.add(1, 1, 1, 1)
+        );
+
+
+        System.out.println(
+                withCurriedFn.apply(1).apply(1).apply(1).apply(1)
+        );
+
+
+        System.out.println(
+                withCurriedBiFn.apply(1, 1).apply(1).apply(1)
+        );
+
+
+        System.out.println(
+                sum4.apply(1, 1).apply(1, 1)
+        );
+
     }
 }

@@ -1,10 +1,10 @@
 package monads.examples.applicatives;
 
-import monads.types.ApplicativeFunctor;
+import monads.types.Applicative;
 
 import java.util.function.Function;
 
-public class GenericApplicative<T> implements ApplicativeFunctor<T, GenericApplicative<?>> {
+public class GenericApplicative<T> implements Applicative<T, GenericApplicative<?>> {
 
     private final T t;
 
@@ -23,7 +23,7 @@ public class GenericApplicative<T> implements ApplicativeFunctor<T, GenericAppli
     }
 
     @Override
-    public <B> GenericApplicative<B> apply(ApplicativeFunctor<Function<T, B>, GenericApplicative<?>> f) {
+    public <B> GenericApplicative<B> apply(Applicative<Function<T, B>, GenericApplicative<?>> f) {
         Function<T, B> fn = ((GenericApplicative<Function<T, B>>)f).t;
         return pure(fn.apply(t));
     }

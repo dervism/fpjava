@@ -16,7 +16,7 @@ import java.util.function.Function;
  * @param <A>
  */
 
-public interface ApplicativeFunctor<A, F extends ApplicativeFunctor<?, F>> extends Functor<A, F> {
+public interface Applicative<A, F extends Applicative<?, F>> extends Functor<A, F> {
 
     /**
      * The pure function tells us how we can wrap a normal
@@ -25,7 +25,7 @@ public interface ApplicativeFunctor<A, F extends ApplicativeFunctor<?, F>> exten
      * @param <B> The object you want to wrap
      * @return Applicative functor of type B
      */
-    <B> ApplicativeFunctor<B, F> pure(B value);
+    <B> Applicative<B, F> pure(B value);
 
     /**
      * The apply function allows to chain operations by
@@ -35,5 +35,5 @@ public interface ApplicativeFunctor<A, F extends ApplicativeFunctor<?, F>> exten
      * @param f
      * @return
      */
-    <B> ApplicativeFunctor<B, F> apply(ApplicativeFunctor<Function<A, B>, F> f);
+    <B> Applicative<B, F> apply(Applicative<Function<A, B>, F> f);
 }

@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ApplicativeFunctorTest {
+class ApplicativeTest {
 
     @Test
     void addApplicatives() {

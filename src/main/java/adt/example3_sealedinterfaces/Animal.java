@@ -5,6 +5,9 @@ public sealed interface Animal permits Cat, Dog {
     String toString();
     int age();
 
+
+
+
     // Java 17 version - pattern matching with sealed interfaces
     // JEP 406
     static String check17(Animal animal) {
@@ -18,6 +21,10 @@ public sealed interface Animal permits Cat, Dog {
 
         };
     }
+
+
+
+
 
     static String check19(Animal animal) {
         return switch (animal) {

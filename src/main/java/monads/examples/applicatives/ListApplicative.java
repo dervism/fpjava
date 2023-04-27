@@ -1,12 +1,12 @@
 package monads.examples.applicatives;
 
-import monads.types.ApplicativeFunctor;
+import monads.types.Applicative;
 
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public record ListApplicative<T>(List<T> list) implements ApplicativeFunctor<T, ListApplicative<?>> {
+public record ListApplicative<T>(List<T> list) implements Applicative<T, ListApplicative<?>> {
 
     @Override
     public String toString() {
@@ -26,7 +26,7 @@ public record ListApplicative<T>(List<T> list) implements ApplicativeFunctor<T, 
     }
 
     @Override
-    public <B> ListApplicative<B> apply(ApplicativeFunctor<Function<T, B>, ListApplicative<?>> f) {
+    public <B> ListApplicative<B> apply(Applicative<Function<T, B>, ListApplicative<?>> f) {
         List<Function<T, B>> fns = ((ListApplicative<Function<T, B>>) f).value();
 
         return new ListApplicative<>( fns.stream().flatMap(fn -> value().stream().map(fn)).toList() );

@@ -3,7 +3,12 @@ package mvc;
 import java.util.List;
 
 public class Car {
-    List<Tiers> hjul;
-    NavigasjonsSystem navi;
+    private List<Tiers> hjul;
+    private NavigasjonsSystem navi;
+    private BagasjePlass bagasjePlass;
+
+    public BagasjePlass getBagasjePlass() {
+        return bagasjePlass;
+    }
 
 }

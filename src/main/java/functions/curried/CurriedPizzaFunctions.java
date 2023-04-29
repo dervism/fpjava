@@ -1,4 +1,4 @@
-package functions;
+package functions.curried;
 
 import java.util.function.Function;
 

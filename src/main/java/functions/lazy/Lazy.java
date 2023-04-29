@@ -1,4 +1,4 @@
-package lazy;
+package functions.lazy;
 
 import java.util.function.Supplier;
 

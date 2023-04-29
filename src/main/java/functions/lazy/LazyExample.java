@@ -1,4 +1,4 @@
-package lazy;
+package functions.lazy;
 
 public class LazyExample {
 

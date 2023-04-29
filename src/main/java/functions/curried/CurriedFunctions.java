@@ -1,9 +1,21 @@
-package functions;
+package functions.curried;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+/**
+ * Examples of how to curry functions with Java.
+ * And yes, it's not pretty.
+ *
+ * Hopefully, one day we'll not be doing this:
+ *    .apply(1).apply(1).apply(1).apply(1)
+ */
+
 public class CurriedFunctions {
+
+    /**
+     * The examples show how to sum 4 numbers.
+     */
 
     @FunctionalInterface
     interface F4<A, B, C, D> {

@@ -1,4 +1,4 @@
-package functions;
+package functions.curried;
 
 public class WithoutCurriedFunctions {
 

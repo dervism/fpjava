@@ -18,6 +18,9 @@ public sealed interface Animal permits Cat, Dog {
     // Java 17 version - pattern matching with sealed interfaces
     // JEP 406
     static String checkJdk17Version(Animal animal) {
+
+        // notice switch is now an "expression" (meaning: it returns values)
+        // the old style of switch were a "statement" (meaning: it causes side-effects)
         return switch (animal) {
 
             case Cat c -> c.mjau();

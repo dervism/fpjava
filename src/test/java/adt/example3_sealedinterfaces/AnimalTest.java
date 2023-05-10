@@ -7,10 +7,10 @@ class AnimalTest {
     @Test
     void test_pattern_matching() {
         System.out.println(
-                Animal.check17(new Dog())
+                Animal.checkJdk17Version(new Dog())
         );
         System.out.println(
-                Animal.check17(new Cat())
+                Animal.checkJdk17Version(new Cat())
         );
     }
 }

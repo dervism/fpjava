@@ -1,8 +1,11 @@
 package adt.example1_interface_enum;
 
 /**
- * Java 8 way of matching algebraic data types, before the improvements to switch case.
- * Uses enums to make any object possible to match in switch statements.
+ * Old Java 8 way of matching algebraic data types.
+ * Uses enums to make any class/object possible to match in switch statements.
+ *
+ * The code simulates the Java 20 "sealed interfaces" feature by disallowing
+ * any switch-case matching if a data type is not added to the 'cases' enum.
  */
 
 public interface Animal {
@@ -28,7 +31,7 @@ public interface Animal {
             case Dog:
                 return "Dog = " + ((Dog) animal).woff();
 
-            // Note that we can't achieve exhaustive matching (during compile time)
+            // Note that we can't achieve exhaustive matching as in JDK20
             default:
                 throw new IllegalArgumentException("Unknown type");
         }

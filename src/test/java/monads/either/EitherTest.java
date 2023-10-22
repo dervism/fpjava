@@ -9,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class EitherTest {
 
     @Test
+    void laws() {
+
+    }
+
+    @Test
     void either_returns_value_right() {
         int test = 11;
         Either<String, Integer> e = Either.right(11);
@@ -66,14 +71,22 @@ class EitherTest {
         System.out.println(result1);
         System.out.println(result2);
 
-        var multiplied = result1.map(x -> x * 2);
-        var multiplied2 = result2.map(x -> x * 2);
+        Either<String, Integer> multiplied = result1.map(x -> x * 2);
+        Either<String, Integer> multiplied2 = result2.map(x -> x * 2);
 
         System.out.println(multiplied); // Output: 4
+        assertEquals(4, multiplied.rightValue());
+
         System.out.println(multiplied2); // Output: Nothing
+        assertInstanceOf(Left.class, multiplied2);
+        assertEquals("Nothing", multiplied2.leftValue());
 
         System.out.println(multiplied.flatMap(x -> compute(x * 2))); // Output: 8
-        System.out.println(multiplied2.flatMap(x -> compute(x * 2))); // Output: Nothing
+
+        Either<String, Integer> flatMapped = multiplied2.flatMap(x -> compute(x * 2));
+        System.out.println(flatMapped); // Output: Nothing
+        assertInstanceOf(Left.class, flatMapped);
+        assertEquals("Nothing", flatMapped.leftValue());
     }
 
     public static Either<String, Integer> compute(int num) {

@@ -6,6 +6,8 @@ import monads.types.Monad;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import static java.util.Objects.requireNonNull;
+
 /**
  * A minimal version of Either built using a sealed interface.
  *
@@ -45,26 +47,26 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
 
     @Override
     @SuppressWarnings("unchecked")
-    default <T> Monad<T, Either<L, ?>> flatMap(Function<? super R, ? extends Monad<T, Either<L, ?>>> mapper) {
+    default <T> Either<L, T> flatMap(Function<? super R, ? extends Monad<T, Either<L, ?>>> mapper) {
         if (isRight()) {
-            return mapper.apply(rightValue());
+            return (Either<L, T>) requireNonNull(mapper.apply(rightValue()));
         } else {
-            return (Monad<T, Either<L, ?>>) this;
+            return (Either<L, T>) this;
         }
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    default <T> Monad<T, Either<L, ?>> map(Function<? super R, ? extends T> mapper) {
+    default <T> Either<L, T> map(Function<? super R, ? extends T> mapper) {
         if (isRight()) {
             return Either.right(mapper.apply(rightValue()));
         } else {
-            return (Monad<T, Either<L, ?>>) this;
+            return (Either<L, T>) this;
         }
     }
 
     @Override
-    default Monad<R, Either<L, ?>> filter(Predicate<R> predicate) {
+    default Either<L, R> filter(Predicate<R> predicate) {
         if (isRight() && predicate.test(rightValue())) {
             return Either.right(rightValue());
         } else {

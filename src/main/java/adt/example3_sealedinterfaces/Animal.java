@@ -1,13 +1,18 @@
 package adt.example3_sealedinterfaces;
 
 /**
- * This is a improved version using sealed interfaces with 'permits' to
- * limit who can extend this interface. The switch-case know allows
+ * This is an improved version using sealed interfaces with 'permits' to
+ * limit who can extend this interface. The updated switch-expression allows
  * advanced pattern matching with access to the object properties and methods.
  *
  * Sealed interfaces is an important step forward to better support for
  * algebraic data types in Java, while at the same time making the code safer
- * with achieve exhaustive matching (see code examples below).
+ * through exhaustive matching (see code examples below).
+ *
+ * Notice:
+ * Animal is an algebraic data types, more specifically a sum type, because
+ * the only ever values it can be is either a Cat or a Dog (or any other
+ * value specified in 'permits' here).
  */
 
 public sealed interface Animal permits Cat, Dog {

@@ -27,13 +27,17 @@ public record ListApplicative<T>(List<T> list) implements Applicative<T, ListApp
 
     @Override
     public <B> ListApplicative<B> apply(Applicative<Function<T, B>, ListApplicative<?>> f) {
-        List<Function<T, B>> fns = ((ListApplicative<Function<T, B>>) f).value();
+        List<Function<T, B>> fns = ((ListApplicative<Function<T, B>>) f).list();
 
-        return new ListApplicative<>( fns.stream().flatMap(fn -> value().stream().map(fn)).toList() );
-        //return new ListApplicative<>( fns.stream().flatMap(value().stream()::map).toList() );
+        return new ListApplicative<>( fns.stream().flatMap(fn -> list().stream().map(fn)).toList() );
     }
 
-    public List<T> value() {
+    @Override
+    public T value() {
+        return null;
+    }
+
+    public List<T> list() {
         return list;
     }
 

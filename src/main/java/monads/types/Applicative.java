@@ -36,4 +36,6 @@ public interface Applicative<A, F extends Applicative<?, F>> extends Functor<A, 
      * @return
      */
     <B> Applicative<B, F> apply(Applicative<Function<A, B>, F> f);
+
+    A value();
 }

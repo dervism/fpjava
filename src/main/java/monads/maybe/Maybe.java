@@ -44,9 +44,4 @@ public sealed interface Maybe<A> extends Monad<A, Maybe<?>> permits Just, Nothin
     default Monad<A, Maybe<?>> filter(Predicate<A> predicate) {
         return predicate.test(value()) ? Maybe.just(value()) : Maybe.nothing();
     }
-
-    @Override
-    default A value() {
-        return null;
-    }
 }

@@ -30,11 +30,6 @@ public record Right<L, R>(R r) implements Either<L, R> {
     }
 
     @Override
-    public R value() {
-        return r;
-    }
-
-    @Override
     public L leftValue() {
         return null;
     }
@@ -43,6 +38,4 @@ public record Right<L, R>(R r) implements Either<L, R> {
     public R rightValue() {
         return r;
     }
-
-
 }

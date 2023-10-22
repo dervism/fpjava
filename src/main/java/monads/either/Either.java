@@ -1,6 +1,6 @@
 package monads.either;
 
-import monads.maybe.Maybe;
+import monads.types.Applicative;
 import monads.types.Monad;
 
 import java.util.function.Function;
@@ -38,6 +38,10 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
 
     R rightValue();
 
+    @Override
+    default R value() {
+        return rightValue();
+    }
 
     @Override
     @SuppressWarnings("unchecked")
@@ -63,6 +67,25 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
     default Monad<R, Either<L, ?>> filter(Predicate<R> predicate) {
         if (isRight() && predicate.test(rightValue())) {
             return Either.right(rightValue());
+        } else {
+            return Either.left(leftValue());
+        }
+    }
+
+    @Override
+    default <B> Either<L, B> pure(B value) {
+        return right(value);
+    }
+
+    @Override
+    default <B> Either<L, B> apply(Applicative<Function<R, B>, Either<L, ?>> f) {
+        return fmap(f.value());
+    }
+
+    @Override
+    default <B> Either<L, B> fmap(Function<R, B> fn) {
+        if (isRight()) {
+            return pure(fn.apply(rightValue()));
         } else {
             return Either.left(leftValue());
         }

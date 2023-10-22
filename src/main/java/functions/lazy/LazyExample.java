@@ -1,5 +1,7 @@
 package functions.lazy;
 
+import static functions.lazy.Lazy.lazy;
+
 public class LazyExample {
 
 
@@ -9,18 +11,20 @@ public class LazyExample {
     }
 
     public static void main(String[] args) {
-        int x = 1;
+        boolean condition = 1 + Math.random() > 0.5;
 
-        //int temp = compute(5);
-        var lazyTemp = Lazy.lazy(() -> compute(5));
+        System.out.println("Before method calls");
 
-        System.out.println("Here.");
+        int temp = compute(5);
+        var lazyTemp = lazy(() -> compute(5));
 
-        if  (x > 5 && lazyTemp.value() > 10) {
-            System.out.println("Result.");
+        System.out.println("After method calls");
+
+        if  (condition && temp > 10) {
+            System.out.println("Inside true condition.");
         }
         else
-            System.out.println("No result.");
+            System.out.println("Outside true condition.");
     }
 
 }

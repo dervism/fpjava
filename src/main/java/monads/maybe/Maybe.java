@@ -1,5 +1,6 @@
 package monads.maybe;
 
+import monads.types.Applicative;
 import monads.types.Monad;
 
 import java.util.function.Function;
@@ -12,10 +13,6 @@ public sealed interface Maybe<A> extends Monad<A, Maybe<?>> permits Just, Nothin
     default A orElse(A a) {
         if (isNothing()) return a;
         return value();
-    }
-
-    default <R> R andThen(Function<A, R> then) {
-        return then.apply(value());
     }
 
     static <X> Maybe<X> maybe(X a) {
@@ -36,12 +33,27 @@ public sealed interface Maybe<A> extends Monad<A, Maybe<?>> permits Just, Nothin
     }
 
     @Override
-    default <R> Monad<R, Maybe<?>> map(Function<? super A, ? extends R> mapper) {
+    default <R> Maybe<R> map(Function<? super A, ? extends R> mapper) {
         return !isNothing() ? Maybe.just(mapper.apply(value())) : Maybe.nothing();
     }
 
     @Override
-    default Monad<A, Maybe<?>> filter(Predicate<A> predicate) {
+    default Maybe<A> filter(Predicate<A> predicate) {
         return predicate.test(value()) ? Maybe.just(value()) : Maybe.nothing();
+    }
+
+    @Override
+    default <B> Maybe<B> pure(B value) {
+        return new Just<>(value);
+    }
+
+    @Override
+    default <B> Maybe<B> apply(Applicative<Function<A, B>, Maybe<?>> f) {
+        return fmap(f.value());
+    }
+
+    @Override
+    default <B> Maybe<B> fmap(Function<A, B> fn) {
+        return !isNothing() ? Maybe.just(fn.apply(value())) : Maybe.nothing();
     }
 }

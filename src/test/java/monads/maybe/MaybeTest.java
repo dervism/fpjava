@@ -10,15 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MaybeTest {
 
-    @Test
-    void maybe_returns_nothing_on_null() {
-        Maybe<Object> maybe = Maybe.maybe(null);
-
-        assertTrue(maybe instanceof Nothing);
-        assertTrue(maybe.isNothing());
-    }
-
-    final int G = 106399;
+    final int G = 118620;
     Function<List<Integer>, Maybe<Double>> dagpengeCalculator = ints -> {
         if (ints.isEmpty()) return Maybe.nothing();
         if (ints.getFirst() == 0) return Maybe.nothing();
@@ -38,9 +30,12 @@ class MaybeTest {
 
         String msg = switch ( dagpenger ) {
             case Just<Double> j -> "Du får " + j.value();
-            case Nothing<Double> n -> "Nada!";
+            case Nothing<Double> _ -> "Nada!";
         };
 
+        assertTrue(dagpenger instanceof Just<Double>);
+        assertEquals(1924D, dagpenger.value());
+        assertEquals(1924D, dagpenger.orElse(0D));
         assertEquals("Du får 1924.0", msg);
     }
 
@@ -53,10 +48,10 @@ class MaybeTest {
     }
 
     @Test
-    void maybe_returns_just_of_type_double() {
-        Maybe<Double> dagpenger = dagpengeCalculator.apply(List.of(500_000, 450_000, 400_000));
-        assertTrue(dagpenger instanceof Just<Double>);
-        assertEquals(1924D, dagpenger.value());
-        assertEquals(1924D, dagpenger.orElse(0D));
+    void maybe_returns_nothing_on_null() {
+        Maybe<Object> maybe = Maybe.maybe(null);
+
+        assertTrue(maybe instanceof Nothing);
+        assertTrue(maybe.isNothing());
     }
 }

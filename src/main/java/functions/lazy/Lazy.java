@@ -14,7 +14,7 @@ public class Lazy<T> {
         return new Lazy<>(fn);
     }
 
-    public T value() {
+    public T get() {
         return fn.get();
     }
 }

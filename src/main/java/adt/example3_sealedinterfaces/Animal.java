@@ -21,7 +21,6 @@ public sealed interface Animal permits Cat, Dog {
     int age();
 
     // Java 17 version - pattern matching with sealed interfaces
-    // JEP 406
     static String checkJdk17Version(Animal animal) {
 
         // notice switch is now an "expression" (meaning: it returns values)
@@ -35,7 +34,7 @@ public sealed interface Animal permits Cat, Dog {
 
             case Dog d -> d.woff();
 
-            // achieve exhaustive matching applies, meaning
+            // exhaustive pattern matching applies, meaning
             // you must match all the data types extending the
             // Animal interface. A compile time error is thrown
             // if a data type of Animal is missing.
@@ -52,9 +51,6 @@ public sealed interface Animal permits Cat, Dog {
             case Dog d when d.age > 10  -> "Old dog: " + d.woff();
 
             case Dog d -> d.woff();
-
-            // achieve exhaustive matching applies
-
         };
     }
 

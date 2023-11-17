@@ -12,7 +12,6 @@ public class PartialPizzaFunctions {
 
     interface DoubleFunction extends Function<Double, Double> {}
     static BiFunction<Double, Double, Double> peoplePrPizza = (a, b) -> a / b;
-    static Function<Double, DoubleFunction> peoplePrPizza2 = a -> b -> a / b;
     static DoubleFunction addOneExtra = a -> a + 1;
 
     static Function<Double, DoubleFunction> product = x -> (y -> x * y);
@@ -23,10 +22,12 @@ public class PartialPizzaFunctions {
     // partially apply parameters to function peoplePrPizza
     static DoubleFunction dividePeoplePrPizzaPeppes = a -> peoplePrPizza.apply(a, 3d);
 
+
     static Function<Double, Double> peppes = multiple66Percent.andThen(dividePeoplePrPizzaPeppes).andThen(addOneExtra);
 
     public static void main(String[] args) {
-        var numPizzas = peppes.apply(15d);
-        System.out.printf("You need %.1f pizza's.", numPizzas);
+        double numberOfPpl = 15d;
+        var numPizzas = peppes.apply(numberOfPpl);
+        System.out.printf("You need %.1f pizza's for %.1f people.", numPizzas, numberOfPpl);
     }
 }

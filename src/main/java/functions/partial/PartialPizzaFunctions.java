@@ -22,7 +22,6 @@ public class PartialPizzaFunctions {
 
     // partially apply parameters to function peoplePrPizza
     static DoubleFunction dividePeoplePrPizzaPeppes = a -> peoplePrPizza.apply(a, 3d);
-    static DoubleFunction dividePeoplePrPizzaPeppes2 = a -> peoplePrPizza2.apply(a).apply(3d);
 
     static Function<Double, Double> peppes = multiple66Percent.andThen(dividePeoplePrPizzaPeppes).andThen(addOneExtra);
 

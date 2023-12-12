@@ -31,7 +31,7 @@ public interface Animal {
             case Dog:
                 return "Dog = " + ((Dog) animal).woff();
 
-            // Note that we can't achieve exhaustive matching as in JDK20
+            // Note that we can't achieve exhaustive matching as in JDK21
             default:
                 throw new IllegalArgumentException("Unknown type");
         }

@@ -23,10 +23,15 @@ public class CurriedFunctions {
     }
 
 
+    // not curried function for reference
     static F4<Integer, Integer, Integer, Integer> sum =
             (a, b, c, d) -> a + b + c + d;
 
+    static  F4<Integer, Integer, Integer, Integer> sum2 =
+            (a, b, c, d) -> a + b + c + d;
 
+
+    // the curried version
     static Function<Integer, Function<Integer, Function<Integer, Function<Integer, Integer>>>> withCurriedFn =
             a -> b -> c -> d -> a + b + c + d;
 

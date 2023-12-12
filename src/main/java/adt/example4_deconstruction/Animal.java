@@ -21,8 +21,10 @@ public sealed interface Animal permits Cat, Dog {
 
     static String unnamedPatterns(Animal animal) {
         return switch (animal) {
-            case Cat(var _, var a) -> "Cat name = %s, age = %s".formatted("ignored", a);
-            case Dog(_, _)         -> "Dog name = %s, age = %s".formatted("ignored", "ignored");
+            case Cat(var _, var a) -> "Cat age %s".formatted(a);
+            case Dog(var n, _) when n.isEmpty() -> "Dog without name";
+            case Dog(_, var a) when a > 10 -> "An old Dog";
+            case Dog(_, _)         -> "Unknown Dog";
             case null              -> "Invalid animal";
         };
     }

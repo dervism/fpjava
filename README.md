@@ -3,9 +3,11 @@
 This repo serves as a place to practice functional programming in Java and to understand functional programming by building minimal versions of known Haskell-concepts in Java. Multiple FP-libraries exist for Java, but building these concepts myself help me learn them better.
 
 The repo uses:
+- [x] Algebraic Data Types
 - [x] Sealed classes and interfaces
+- [x] Exhaustive pattern matching
+- [x] Unnamed patterns and variables
 - [x] Records
-- [x] Pattern matching on sealed classes and interfaces (switch)
 - [ ] Value types
 
 Todo's:  
@@ -19,7 +21,7 @@ Todo's:
 - [x] Functors
 - [ ] Monoids  
 - [ ] Semigroups  
-- [ ] Partial functions
+- [x] Partial functions
 
 Haskell books I read:  
 - [ ] The Haskell Book

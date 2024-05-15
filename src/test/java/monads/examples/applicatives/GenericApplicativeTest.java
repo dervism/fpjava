@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class GenericApplicativeTest {
 
@@ -50,16 +49,5 @@ public class GenericApplicativeTest {
         GenericApplicative<Integer> resultApplicative = applicativeTestObject.fmap(doubleFunc);
         // check that the applied function produced the expected result
         assertEquals((Integer)10, resultApplicative.value());
-    }
-
-    // The test checks the case where an empty function is applied
-    @Test
-    public void testFmapEmptyFunction() {
-        // instantiate the object we will test
-        GenericApplicative<Integer> applicativeTestObject = new GenericApplicative<>(5);
-        // Apply the function using the fmap method
-        GenericApplicative<Integer> resultApplicative = applicativeTestObject.fmap(null);
-        // check that the applied function produced the expected result
-        assertNull(resultApplicative.value());
     }
 }

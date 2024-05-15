@@ -2,14 +2,11 @@ package adt.example4_deconstruction;
 
 /**
  * This version shows how to use deconstructional pattern matching
- * with records. JDK21 also brings in unnamed patterns and variables,
- * taking Java further on the functional programming style.
+ * with records. JDK21 brings in unnamed patterns and variables,
+ * taking Java further on the functional style of programming.
  */
 
 public sealed interface Animal permits Cat, Dog {
-
-    String name();
-    int age();
 
     static String deconstruction(Animal animal) {
         return switch (animal) {
@@ -19,6 +16,7 @@ public sealed interface Animal permits Cat, Dog {
         };
     }
 
+    // example of unnamed patterns with the _ symbol
     static String unnamedPatterns(Animal animal) {
         return switch (animal) {
             case Cat(var _, var a) -> "Cat age %s".formatted(a);
@@ -29,11 +27,35 @@ public sealed interface Animal permits Cat, Dog {
         };
     }
 
-    // Enhanced type checking.
-    // Notice we can use 'when' keyword here too
+    // example of how to use yield (multi-line cases)
+    static String yield(Animal animal) {
+        String info = switch (animal) {
+            case Cat(var n, var a) -> {
+                String catInfo = "Cat name = %s, age = %s".formatted(n, a);
+                System.out.println(catInfo);
+
+                yield catInfo;
+            }
+
+            case Dog(var n, var a) -> {
+                String dogInfo = "Dog name = %s, age = %s".formatted(n, a);
+                System.out.println(dogInfo);
+
+                yield dogInfo;
+            }
+
+            case null              -> "Invalid animal";
+        };
+
+        return "Animal info: " + info;
+    }
+
+
     record Point(int i, int j) {}
     enum Color { RED, GREEN, BLUE; }
 
+    // Enhanced type checking on regular objects
+    // Notice we can use 'when' keyword here too
     static String enhancedTypes(Object obj) {
         return switch (obj) {
             case null                              -> "null";
@@ -48,8 +70,8 @@ public sealed interface Animal permits Cat, Dog {
 
 
     // Dominance of case labels:
-    //  for a given value of the selector expression it is
-    //  now possible for more than one case label to potentially apply
+    // For a given value of the selector expression it is
+    // now possible for more than one case label to potentially apply
     // The first case label appearing in a switch block that applies to a value is chosen.
     static void dominance(Object obj) {
         switch (obj) {

@@ -14,8 +14,8 @@ public class PizzaFormulaBuilder {
 
     private PizzaFormulaBuilder() {}
 
-    public PizzaFormula makePizzaFormula() {
-        return new PizzaFormula(getNumExtra(), getSignedUp(), getPizzaSize(), getShowUpRate());
+    public PizzaFormula makeLargeEventPizzaFormula() {
+        return new LargeEventPizzaFormula(getNumExtra(), getSignedUp(), getPizzaSize(), getShowUpRate());
     }
 
     public _Builder Builder() {

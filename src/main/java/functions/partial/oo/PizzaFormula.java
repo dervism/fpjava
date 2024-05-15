@@ -1,20 +1,13 @@
 package functions.partial.oo;
 
-public class PizzaFormula {
+public abstract class PizzaFormula extends AbstractFormula<Double> {
 
-    private final NumExtra numExtra;
-
-    private final NumPeopleSignedUp signedUp;
-
-    private final PizzaSize pizzaSize;
-
-    private final ProbablyShowUpRate showUpRate;
+    private final PizzaFormulaCalculationTemplate template;
 
     public PizzaFormula(NumExtra numExtra, NumPeopleSignedUp signedUp, PizzaSize pizzaSize, ProbablyShowUpRate showUpRate) {
-        this.numExtra = numExtra;
-        this.signedUp = signedUp;
-        this.pizzaSize = pizzaSize;
-        this.showUpRate = showUpRate;
+        this.template = new PizzaFormulaCalculationTemplate(
+                numExtra, signedUp, pizzaSize, showUpRate
+        );
     }
 
     public PizzaFormula(PizzaFormulaBuilder builder) {
@@ -22,15 +15,15 @@ public class PizzaFormula {
     }
 
     public Amount<Double> howManyPizzasDoINeed(Amount<Integer> signedUp) {
-        Amount<Double> rate = showUpRate.calculate(new NumPeopleSignedUp(signedUp));
-        Amount<Integer> extras = numExtra.getExtras();
-        return new Amount<>(signedUp.getValue() * rate.getValue() + extras.getValue());
+        return template.calculateAmount(signedUp);
     }
 
     public Amount<Double> howManyPizzasDoINeed() {
-        Amount<Double> rate = showUpRate.calculate(signedUp);
-        Amount<Integer> extras = numExtra.getExtras();
-        return new Amount<>(
-                (rate.getValue() / pizzaSize.sizeFactor().getValue()) + extras.getValue());
+        return template.calculateAmount();
+    }
+
+    @Override
+    public Amount<Double> calculate() {
+        return howManyPizzasDoINeed();
     }
 }

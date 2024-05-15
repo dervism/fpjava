@@ -2,7 +2,7 @@ package functions.partial.oo;
 
 // NumPeopleSignedUp a, NumExtra b => (a, b) -> (a * 0.66 / 3) + b
 
-import functions.partial.PartialPizzaFunctions;
+import functions.partial.fp.PartialPizzaFunctions;
 
 public class EnterprisePizzaCalculator {
     public static void main(String[] args) {
@@ -11,9 +11,9 @@ public class EnterprisePizzaCalculator {
         PizzaFormula formula = PizzaFormulaBuilder
                 .standardFormula()
                 .signedUp(50)
-                .build().makePizzaFormula();
+                .build().makeLargeEventPizzaFormula();
 
-        System.out.println(STR."Formula: \{formula.howManyPizzasDoINeed()}");
+        System.out.println(STR."Formula: \{formula.calculate()}");
         System.out.println(STR."Fn: \{fn}");
     }
 }

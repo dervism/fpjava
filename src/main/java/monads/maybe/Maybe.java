@@ -54,6 +54,6 @@ public sealed interface Maybe<A> extends Monad<A, Maybe<?>> permits Just, Nothin
 
     @Override
     default <B> Maybe<B> fmap(Function<A, B> fn) {
-        return !isNothing() ? Maybe.just(fn.apply(value())) : Maybe.nothing();
+        return !isNothing() ? pure(fn.apply(value())) : Maybe.nothing();
     }
 }

@@ -14,7 +14,7 @@ public class GenericApplicative<T> implements Applicative<T, GenericApplicative<
 
     @Override
     public <B> GenericApplicative<B> fmap(Function<T, B> f) {
-        return apply(pure(f));
+        return pure(f.apply(t));
     }
 
     @Override
@@ -24,8 +24,7 @@ public class GenericApplicative<T> implements Applicative<T, GenericApplicative<
 
     @Override
     public <B> GenericApplicative<B> apply(Applicative<Function<T, B>, GenericApplicative<?>> f) {
-        Function<T, B> fn = ((GenericApplicative<Function<T, B>>)f).t;
-        return pure(fn.apply(t));
+        return (GenericApplicative<B>) f.fmap(fn -> fn.apply(t));
     }
 
     public T value() {

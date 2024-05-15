@@ -1,4 +1,6 @@
-package functions.partial;
+package functions.partial.fp;
+
+import monads.either.Either;
 
 import java.util.function.Function;
 
@@ -12,13 +14,15 @@ public class PartialPizzaFunctions {
     interface DoubleFunction extends Function<Double, Double> {}
 
     static Function<Double, DoubleFunction> peoplePrPizza = a -> b -> a / b;
+
     static DoubleFunction addOneExtra = a -> a + 1;
 
-    // curried function
+
+    // curried higher order function
     static Function<Double, DoubleFunction> product = x -> (y -> x * y);
 
 
-    // partially apply parameters to function product
+    // partially apply parameters
     static DoubleFunction multiple66Percent = product.apply(0.66);
 
 
@@ -30,9 +34,23 @@ public class PartialPizzaFunctions {
     public static Function<Double, Double> peppes = multiple66Percent.andThen(dividePeopleByPeppesPizzaSize).andThen(addOneExtra);
 
 
+    public static Function<Integer, Either<Integer, Double>> orderPizza =
+            numPpl -> switch (numPpl) {
+                case Integer n when n <= 0 -> Either.left(0);
+                case 1 -> Either.right(1d);
+                default -> Either.right(peppes.apply(numPpl.doubleValue()));
+            };
+
+
     public static void main(String[] args) {
-        double numberOfPpl = 44d;
-        var numPizzas = peppes.apply(numberOfPpl);
-        System.out.printf("You need %.1f pizza's for %.1f people.", numPizzas, numberOfPpl);
+        final int numberOfPpl = 50;
+        var order = orderPizza
+                .apply(numberOfPpl)
+                .either(
+                        _ -> "No pizzas.",
+                        numPizzas -> "You need %.1f pizza's for %s people.".formatted(numPizzas, numberOfPpl)
+                );
+
+        System.out.printf(order);
     }
 }

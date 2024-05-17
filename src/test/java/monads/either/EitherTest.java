@@ -10,14 +10,22 @@ class EitherTest {
 
     @Test
     void laws() {
-        var e = Either.right(42);
+            var e = Either.right(42);
         // 1. identity law
         assertEquals(e, e.fmap(x -> x));
+
+        System.out.println(e.hashCode());
+        System.out.println(e.fmap(x -> x).hashCode());
 
         // 2. composition
         Function<Integer, Integer> f = x -> x + 1;
         Function<Integer, Integer> g = x -> x * 2;
         assertEquals(e.fmap(f.andThen(g)), e.fmap(f).fmap(g));
+
+        // Another way of writing composition
+        Function<Integer, Integer> doubleIt = x -> x + x;
+        var _21 = Either.right(21);
+        assertEquals(Either.right(42), _21.fmap(Function.identity()).fmap(doubleIt));
     }
 
     @Test

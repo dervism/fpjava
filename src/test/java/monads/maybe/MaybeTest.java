@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static monads.examples.either.DagpengerFn.dagpengerFn;
+import static examples.example_3.either.DagpengerFnMaybe.dagpengerFn;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MaybeTest {

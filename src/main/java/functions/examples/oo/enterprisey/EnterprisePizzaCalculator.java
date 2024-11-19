@@ -13,7 +13,7 @@ public class EnterprisePizzaCalculator {
                 .signedUp(50)
                 .build().makeLargeEventPizzaFormula();
 
-        System.out.println(STR."Formula: \{formula.calculate()}");
-        System.out.println(STR."Fn: \{fn}");
+        System.out.println("Formula: " + formula.calculate());
+        System.out.println("Fn: " + fn);
     }
 }

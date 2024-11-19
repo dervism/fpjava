@@ -1,7 +1,5 @@
-import java.util.function.Supplier;
-
 int compute(int number) {
-    System.out.println(STR."Inside method compute(\{number}).");
+    System.out.println("Inside method compute(" + number + ").");
     return number * 2;
 }
 
@@ -11,7 +9,7 @@ void main() {
     Supplier<Integer> lazySupplier = () -> compute(5);
 
     if  (condition) {
-        System.out.println(STR."Computed number is \{lazySupplier.get()}");
+        System.out.println("Computed number is " + lazySupplier.get());
     }
     else
         System.out.println("Did not compute.");

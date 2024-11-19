@@ -19,8 +19,6 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
 
     enum EitherSide { LEFT, RIGHT }
 
-    EitherSide side();
-
     boolean isRight();
     boolean isLeft();
 
@@ -33,8 +31,6 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
     }
 
     <X> X either(Function<L, X> left, Function<R, X> right);
-
-    Either<R, L> swap();
 
     L leftValue();
 

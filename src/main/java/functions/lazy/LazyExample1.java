@@ -1,6 +1,6 @@
 
 int compute(int number) {
-    System.out.println(STR."Inside method compute(\{number}).");
+    System.out.println("Inside method compute(" + number + ").");
     return number * 2;
 }
 
@@ -14,7 +14,7 @@ void main(String[] args) {
     System.out.println("After method call");
 
     if  (condition) {
-        System.out.println(STR."Computed number is \{temp}");
+        System.out.println("Computed number is " + temp);
     }
     else
         System.out.println("Did not compute.");

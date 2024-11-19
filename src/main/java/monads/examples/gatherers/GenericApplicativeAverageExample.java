@@ -46,7 +46,7 @@ public class GenericApplicativeAverageExample {
                     .orElse(new GenericApplicative<>(AverageState.identity()))
                     .fmap(AverageState::average);
 
-        System.out.println(STR."Average: \{average.value()}");
+        System.out.println("Average: " + average.value());
     }
 }
 

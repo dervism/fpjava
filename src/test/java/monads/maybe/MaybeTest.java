@@ -15,7 +15,7 @@ class MaybeTest {
         Maybe<Double> dagpenger = dagpengerFn.apply(List.of(1d, G*3d, 0d));
 
         String msg = switch ( dagpenger ) {
-            case Just<Double> j -> STR."Du får \{j.value()}";
+            case Just<Double> j -> "Du får " + j.value();
             case Nothing<Double> _ -> "Nada!";
         };
 
@@ -29,7 +29,7 @@ class MaybeTest {
         Maybe<Double> dagpenger = dagpengerFn.apply(List.of(G*1.5d, 0d, 0d));
 
         String msg = switch ( dagpenger ) {
-            case Just<Double> j -> STR."Du får \{j.value()}";
+            case Just<Double> j -> "Du får " + j.value();
             case Nothing<Double> _ -> "Nada!";
         };
 
@@ -43,7 +43,7 @@ class MaybeTest {
         Maybe<Double> dagpenger = dagpengerFn.apply(List.of(500_000d, 450_000d, 400_000d));
 
         String msg = switch ( dagpenger ) {
-            case Just<Double> j -> STR."Du får \{j.value()}";
+            case Just<Double> j -> "Du får " + j.value();
             case Nothing<Double> _ -> "Nada!";
         };
 

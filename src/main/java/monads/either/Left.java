@@ -2,12 +2,8 @@ package monads.either;
 
 import java.util.function.Function;
 
-public record Left<L, R>(L l) implements Either<L, R>{
-
-    @Override
-    public EitherSide side() {
-        return EitherSide.LEFT;
-    }
+public record
+Left<L, R>(L l) implements Either<L, R>{
 
     @Override
     public boolean isRight() {
@@ -22,11 +18,6 @@ public record Left<L, R>(L l) implements Either<L, R>{
     @Override
     public <X> X either(Function<L, X> left, Function<R, X> right) {
         return left.apply(l);
-    }
-
-    @Override
-    public Either<R, L> swap() {
-        return Either.right(l);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package examples.example_4.oo;
+package examples.example_4.functionalVsImperativ;
 
 
 import java.util.*;

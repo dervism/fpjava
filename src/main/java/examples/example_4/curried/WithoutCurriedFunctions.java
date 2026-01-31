@@ -1,4 +1,4 @@
-package functions.examples.curried;
+package examples.example_4.curried;
 
 public class WithoutCurriedFunctions {
 

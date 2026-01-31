@@ -1,4 +1,4 @@
-package functions.examples.curried;
+package examples.example_4.curried;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;

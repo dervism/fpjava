@@ -1,6 +1,6 @@
-package functions.examples.oo.enterprisey;
+package examples.example_4.oo.enterprisey;
 
-import static functions.examples.oo.enterprisey.Amount.amountOf;
+import static examples.example_4.oo.enterprisey.Amount.amountOf;
 
 public class PizzaFormulaBuilder {
 

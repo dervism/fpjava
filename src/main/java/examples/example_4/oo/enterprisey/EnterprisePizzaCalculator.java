@@ -1,12 +1,12 @@
-package functions.examples.oo.enterprisey;
+package examples.example_4.oo.enterprisey;
 
 // NumPeopleSignedUp a, NumExtra b => (a, b) -> (a * 0.66 / 3) + b
 
-import functions.examples.partial.PartialPizzaFunctions;
+import examples.example_4.partial.PartialWithEither;
 
 public class EnterprisePizzaCalculator {
     public static void main(String[] args) {
-        double fn = PartialPizzaFunctions.peppes.apply(50d);
+        double fn = PartialWithEither.peppes.apply(50d);
 
         PizzaFormula formula = PizzaFormulaBuilder
                 .standardFormula()

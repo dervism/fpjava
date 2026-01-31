@@ -1,10 +1,10 @@
-package functions.examples.partial;
+package examples.example_4.partial;
 
 import monads.either.Either;
 
 import java.util.function.Function;
 
-public class PartialPizzaFunctions {
+public class PartialWithEither {
 
     // Models a function for calculating number of Peppes pizza
     // needed for a javaBin meetup:
@@ -17,26 +17,25 @@ public class PartialPizzaFunctions {
 
     static DoubleFunction addOneExtra = a -> a + 1;
 
-
     // curried higher order function
     static Function<Double, DoubleFunction> product = x -> (y -> x * y);
-
 
     // partially apply parameters
     static DoubleFunction multiple66Percent = product.apply(0.66);
 
-
     // partially apply parameters to function peoplePrPizza
-    static DoubleFunction dividePeopleByPeppesPizzaSize = a -> peoplePrPizza.apply(a).apply(3d);
-
+    static DoubleFunction divideByPizzaSize = a -> peoplePrPizza.apply(a).apply(3d);
 
     // function composition
-    public static Function<Double, Double> peppes = multiple66Percent.andThen(dividePeopleByPeppesPizzaSize).andThen(addOneExtra);
+    public static Function<Double, Double> peppes =
+            multiple66Percent
+            .andThen(divideByPizzaSize)
+            .andThen(addOneExtra);
 
 
     public static Function<Integer, Either<Integer, Double>> orderPizza =
             numPpl -> switch (numPpl) {
-                case Integer n when n <= 0 -> Either.left(0);
+                case int n when n <= 0 -> Either.left(0);
                 case 1 -> Either.right(1d);
                 default -> Either.right(peppes.apply(numPpl.doubleValue()));
             };

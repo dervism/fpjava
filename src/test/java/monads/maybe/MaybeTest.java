@@ -8,7 +8,7 @@ import static examples.example_3.either.DagpengerFnMaybe.dagpengerFn;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MaybeTest {
-    final int G = 118620;
+    final int G = 130160;
 
     @Test
     void maybe_returns_just_if_3_G() {

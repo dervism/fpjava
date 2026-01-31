@@ -1,6 +1,6 @@
-package monads.examples.gatherers;
+package examples.example_6.gatherers;
 
-import monads.examples.applicatives.GenericApplicative;
+import examples.example_6.applicatives.GenericApplicative;
 
 import java.util.function.BiFunction;
 import java.util.stream.Gatherers;

@@ -1,4 +1,4 @@
-package monads.examples.gatherers;
+package examples.example_6.gatherers;
 
 import java.util.function.BinaryOperator;
 import java.util.stream.Gatherers;

@@ -1,6 +1,6 @@
 package examples.functors;
 
-import monads.examples.functors.Measurements;
+import examples.example_6.functors.Measurements;
 import org.junit.jupiter.api.Test;
 
 import java.util.function.Function;

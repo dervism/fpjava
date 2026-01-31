@@ -1,4 +1,4 @@
-package monads.examples.functors;
+package examples.example_6.functors;
 
 import monads.types.Functor;
 

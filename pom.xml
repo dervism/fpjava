@@ -9,7 +9,7 @@
     <version>0.1</version>
 
     <properties>
-        <jdkVersion>23</jdkVersion>
+        <jdkVersion>25</jdkVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.11.0-M1</version>
+            <version>5.11.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>

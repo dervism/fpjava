@@ -8,6 +8,9 @@ import functions.iter.Iterables;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * Right fold over an iterable.
+ */
 public class Foldr<A, B> implements F3<F2<? super A, ? super B, ? extends B>, B, Iterable<A>, B> {
 
     private static final Foldr<?, ?> INSTANCE = new Foldr<>();

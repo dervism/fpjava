@@ -6,6 +6,9 @@ import monads.maybe.Maybe;
 
 import java.util.List;
 
+/**
+ * Total variant of last that returns Maybe.
+ */
 public class MaybeLast<A> implements F1<Iterable<A>, Maybe<A>> {
 
     private static final MaybeLast<?> INSTANCE = new MaybeLast<>();

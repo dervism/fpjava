@@ -4,6 +4,9 @@ import functions.fn.F1;
 import functions.fn.F2;
 import functions.iter.Iterables;
 
+/**
+ * Returns true when all elements satisfy the predicate.
+ */
 public class All<A> implements F2<F1<? super A, ? extends Boolean>, Iterable<A>, Boolean> {
 
     private static final All<?> INSTANCE = new All<>();

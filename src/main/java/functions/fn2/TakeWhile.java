@@ -8,6 +8,9 @@ import functions.iter.Iterables;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Takes the longest prefix that satisfies the predicate.
+ */
 public class TakeWhile<A> implements F2<F1<? super A, ? extends Boolean>, Iterable<A>, Iterable<A>> {
 
     private static final TakeWhile<?> INSTANCE = new TakeWhile<>();

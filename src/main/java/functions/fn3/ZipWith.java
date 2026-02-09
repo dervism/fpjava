@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Zips two iterables using a combining function.
+ */
 public class ZipWith<A, B, C> implements F3<F2<? super A, ? super B, ? extends C>, Iterable<A>, Iterable<B>, Iterable<C>> {
 
     private static final ZipWith<?, ?, ?> INSTANCE = new ZipWith<>();

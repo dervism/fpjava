@@ -7,7 +7,7 @@ import java.util.function.Function;
 public record GenericFunctor<A>(A a) implements Functor<A, GenericFunctor<?>> {
 
     @Override
-    public <B> GenericFunctor<B> fmap(Function<A, B> mapper) {
+    public <B> GenericFunctor<B> fmap(Function<? super A, ? extends B> mapper) {
         return new GenericFunctor<>(mapper.apply(a));
     }
 

@@ -11,7 +11,7 @@ public record Measurements<A>(
         A livingRoomSize) implements Functor<A, Measurements<?>> {
 
     @Override
-    public <B> Measurements<B> fmap(Function<A, B> mapper) {
+    public <B> Measurements<B> fmap(Function<? super A, ? extends B> mapper) {
         return new Measurements<>(
                 numBedrooms,
                 mapper.apply(totalSize),

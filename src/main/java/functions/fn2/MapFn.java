@@ -8,6 +8,9 @@ import functions.iter.Iterables;
 
 import java.util.stream.Collectors;
 
+/**
+ * Maps a function over an iterable.
+ */
 public class MapFn<A, B> implements F2<F1<? super A, ? extends B>, Iterable<A>, Iterable<B>> {
 
     private static final MapFn<?, ?> INSTANCE = new MapFn<>();

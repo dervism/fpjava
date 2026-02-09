@@ -1,7 +1,6 @@
 package monads.types;
 
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  *
@@ -18,10 +17,14 @@ public interface Monad<A, M extends Monad<?, M>> extends Applicative<A, M> {
     /**
      * The map method takes a function that transforms the output of the monad
      */
-    <R> Monad<R, M> map(Function<? super A, ? extends R> mapper);
+    default <R> Monad<R, M> map(Function<? super A, ? extends R> mapper) {
+        return flatMap(a -> pure(mapper.apply(a)));
+    }
 
-    //<R> Monad<R, M> lift(R value);
+    @Override
+    <B> Monad<B, M> pure(B value);
 
-    Monad<A, M> filter(Predicate<A> predicate);
+    @Override
+    <B> Monad<B, M> apply(Applicative<Function<A, B>, M> f);
 
 }

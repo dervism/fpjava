@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Returns a new iterable with elements in reverse order.
+ */
 public class Reverse<A> implements F1<Iterable<A>, Iterable<A>> {
 
     private static final Reverse<?> INSTANCE = new Reverse<>();

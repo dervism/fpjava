@@ -3,6 +3,9 @@ package functions.fn1;
 import functions.fn.F1;
 import functions.iter.Iterables;
 
+/**
+ * Multiplies all integers in the iterable (empty yields 1).
+ */
 public class Product implements F1<Iterable<Integer>, Integer> {
 
     private static final Product INSTANCE = new Product();

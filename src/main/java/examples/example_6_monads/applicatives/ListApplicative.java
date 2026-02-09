@@ -16,7 +16,7 @@ public record ListApplicative<T>(List<T> list) implements Applicative<T, ListApp
     }
 
     @Override
-    public <B> ListApplicative<B> fmap(Function<T, B> f) {
+    public <B> ListApplicative<B> fmap(Function<? super T, ? extends B> f) {
         return new ListApplicative<>(list.stream().map(f).collect(Collectors.toList()));
     }
 
@@ -27,14 +27,11 @@ public record ListApplicative<T>(List<T> list) implements Applicative<T, ListApp
 
     @Override
     public <B> ListApplicative<B> apply(Applicative<Function<T, B>, ListApplicative<?>> f) {
-        List<Function<T, B>> fns = ((ListApplicative<Function<T, B>>) f).list();
+        @SuppressWarnings("unchecked")
+        ListApplicative<Function<T, B>> fnApp = (ListApplicative<Function<T, B>>) (ListApplicative<?>) f;
+        List<Function<T, B>> fns = fnApp.list();
 
-        return new ListApplicative<>( fns.stream().flatMap(fn -> list().stream().map(fn)).toList() );
-    }
-
-    @Override
-    public T value() {
-        return null;
+        return new ListApplicative<>(fns.stream().flatMap(fn -> list().stream().map(fn)).toList());
     }
 
     public List<T> list() {

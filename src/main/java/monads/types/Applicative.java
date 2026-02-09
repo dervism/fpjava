@@ -37,5 +37,14 @@ public interface Applicative<A, F extends Applicative<?, F>> extends Functor<A, 
      */
     <B> Applicative<B, F> apply(Applicative<Function<A, B>, F> f);
 
-    A value();
+    default <B> Applicative<B, F> ap(Applicative<Function<A, B>, F> f) {
+        return apply(f);
+    }
+
+    static <A, B, F extends Applicative<?, F>> Applicative<B, F> ap(
+            Applicative<Function<A, B>, F> f,
+            Applicative<A, F> fa
+    ) {
+        return fa.apply(f);
+    }
 }

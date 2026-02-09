@@ -6,6 +6,9 @@ import monads.maybe.Maybe;
 
 import java.util.List;
 
+/**
+ * Total variant of init that returns Maybe.
+ */
 public class MaybeInit<A> implements F1<Iterable<A>, Maybe<Iterable<A>>> {
 
     private static final MaybeInit<?> INSTANCE = new MaybeInit<>();

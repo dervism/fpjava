@@ -6,6 +6,9 @@ import monads.maybe.Maybe;
 
 import java.util.List;
 
+/**
+ * Total variant of tail that returns Maybe.
+ */
 public class MaybeTail<A> implements F1<Iterable<A>, Maybe<Iterable<A>>> {
 
     private static final MaybeTail<?> INSTANCE = new MaybeTail<>();

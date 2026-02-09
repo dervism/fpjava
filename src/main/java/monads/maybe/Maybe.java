@@ -10,6 +10,8 @@ public sealed interface Maybe<A> extends Monad<A, Maybe<?>> permits Just, Nothin
 
     boolean isNothing();
 
+    A value();
+
     default A orElse(A a) {
         if (isNothing()) return a;
         return value();
@@ -28,17 +30,23 @@ public sealed interface Maybe<A> extends Monad<A, Maybe<?>> permits Just, Nothin
     }
 
     @Override
-    default <R> Monad<R, Maybe<?>> flatMap(Function<? super A, ? extends Monad<R, Maybe<?>>> mapper) {
-        return mapper.apply(value());
+    @SuppressWarnings("unchecked")
+    default <R> Maybe<R> flatMap(Function<? super A, ? extends Monad<R, Maybe<?>>> mapper) {
+        if (isNothing()) {
+            return Maybe.nothing();
+        }
+        return (Maybe<R>) mapper.apply(value());
     }
 
     @Override
     default <R> Maybe<R> map(Function<? super A, ? extends R> mapper) {
-        return !isNothing() ? Maybe.just(mapper.apply(value())) : Maybe.nothing();
+        return isNothing() ? Maybe.nothing() : Maybe.just(mapper.apply(value()));
     }
 
-    @Override
-    default Maybe<A> filter(Predicate<A> predicate) {
+    default Maybe<A> filter(Predicate<? super A> predicate) {
+        if (isNothing()) {
+            return Maybe.nothing();
+        }
         return predicate.test(value()) ? Maybe.just(value()) : Maybe.nothing();
     }
 
@@ -48,12 +56,20 @@ public sealed interface Maybe<A> extends Monad<A, Maybe<?>> permits Just, Nothin
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     default <B> Maybe<B> apply(Applicative<Function<A, B>, Maybe<?>> f) {
-        return fmap(f.value());
+        if (isNothing()) {
+            return Maybe.nothing();
+        }
+        if (f instanceof Just<?> justFn) {
+            Function<A, B> fn = (Function<A, B>) justFn.value();
+            return Maybe.just(fn.apply(value()));
+        }
+        return Maybe.nothing();
     }
 
     @Override
-    default <B> Maybe<B> fmap(Function<A, B> fn) {
-        return !isNothing() ? pure(fn.apply(value())) : Maybe.nothing();
+    default <B> Maybe<B> fmap(Function<? super A, ? extends B> fn) {
+        return isNothing() ? Maybe.nothing() : pure(fn.apply(value()));
     }
 }

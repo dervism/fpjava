@@ -3,6 +3,9 @@ package functions.fn1;
 import functions.fn.F1;
 import functions.iter.Iterables;
 
+/**
+ * Removes duplicate elements while preserving encounter order.
+ */
 public class Distinct<A> implements F1<Iterable<A>, Iterable<A>> {
 
     private static final Distinct<?> INSTANCE = new Distinct<>();

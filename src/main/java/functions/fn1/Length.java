@@ -3,6 +3,9 @@ package functions.fn1;
 import functions.fn.F1;
 import functions.iter.Iterables;
 
+/**
+ * Counts elements and returns the size as an int.
+ */
 public class Length<A> implements F1<Iterable<A>, Integer> {
 
     private static final Length<?> INSTANCE = new Length<>();

@@ -36,7 +36,6 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
 
     R rightValue();
 
-    @Override
     default R value() {
         return rightValue();
     }
@@ -61,13 +60,11 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
         }
     }
 
-    @Override
-    default Either<L, R> filter(Predicate<R> predicate) {
-        if (isRight() && predicate.test(rightValue())) {
-            return Either.right(rightValue());
-        } else {
+    default Either<L, R> filter(Predicate<? super R> predicate) {
+        if (!isRight()) {
             return Either.left(leftValue());
         }
+        return predicate.test(rightValue()) ? Either.right(rightValue()) : Either.left(leftValue());
     }
 
     @Override
@@ -76,12 +73,20 @@ public sealed interface Either<L, R> extends Monad<R, Either<L, ?>> permits Left
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     default <B> Either<L, B> apply(Applicative<Function<R, B>, Either<L, ?>> f) {
-        return fmap(f.value());
+        Either<L, Function<R, B>> fnEither = (Either<L, Function<R, B>>) f;
+        if (fnEither.isLeft()) {
+            return (Either<L, B>) fnEither;
+        }
+        if (isLeft()) {
+            return (Either<L, B>) this;
+        }
+        return Either.right(fnEither.rightValue().apply(rightValue()));
     }
 
     @Override
-    default <B> Either<L, B> fmap(Function<R, B> fn) {
+    default <B> Either<L, B> fmap(Function<? super R, ? extends B> fn) {
         if (isRight()) {
             return pure(fn.apply(rightValue()));
         } else {

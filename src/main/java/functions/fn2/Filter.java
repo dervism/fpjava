@@ -4,6 +4,9 @@ import functions.fn.F1;
 import functions.fn.F2;
 import functions.iter.Iterables;
 
+/**
+ * Filters elements by a predicate.
+ */
 public class Filter<A> implements F2<F1<? super A, ? extends Boolean>, Iterable<A>, Iterable<A>> {
 
     private static final Filter<?> INSTANCE = new Filter<>();

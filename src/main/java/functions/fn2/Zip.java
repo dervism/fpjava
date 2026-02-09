@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Zips two iterables into pairs until one runs out.
+ */
 public class Zip<A, B> implements F2<Iterable<A>, Iterable<B>, Iterable<Pair<A, B>>> {
 
     private static final Zip<?, ?> INSTANCE = new Zip<>();

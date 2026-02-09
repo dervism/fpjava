@@ -17,11 +17,6 @@ public record Number<A>(A v) implements Applicative<A, Number<?>> {
         return (Number<B>) f.fmap(fn -> fn.apply(v));
     }
 
-    @Override
-    public A value() {
-        return v();
-    }
-
     /**
      * Applies a function to the value inside the Functor and returns a new Functor.
      * <p />
@@ -37,7 +32,7 @@ public record Number<A>(A v) implements Applicative<A, Number<?>> {
      * @return a new Functor with the transformed value
      */
     @Override
-    public <B> Number<B> fmap(Function<A, B> fn) {
+    public <B> Number<B> fmap(Function<? super A, ? extends B> fn) {
         return pure(fn.apply(v));
     }
 }

@@ -7,6 +7,9 @@ import functions.iter.Iterables;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Concatenates nested iterables into a single unmodifiable iterable.
+ */
 public class Concat<A> implements F1<Iterable<? extends Iterable<A>>, Iterable<A>> {
 
     private static final Concat<?> INSTANCE = new Concat<>();

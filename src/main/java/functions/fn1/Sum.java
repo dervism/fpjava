@@ -3,6 +3,9 @@ package functions.fn1;
 import functions.fn.F1;
 import functions.iter.Iterables;
 
+/**
+ * Sums all integers in the iterable (empty yields 0).
+ */
 public class Sum implements F1<Iterable<Integer>, Integer> {
 
     private static final Sum INSTANCE = new Sum();

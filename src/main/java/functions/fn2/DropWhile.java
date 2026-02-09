@@ -4,6 +4,9 @@ import functions.fn.F1;
 import functions.fn.F2;
 import functions.iter.Iterables;
 
+/**
+ * Drops the longest prefix that satisfies the predicate.
+ */
 public class DropWhile<A> implements F2<F1<? super A, ? extends Boolean>, Iterable<A>, Iterable<A>> {
 
     private static final DropWhile<?> INSTANCE = new DropWhile<>();

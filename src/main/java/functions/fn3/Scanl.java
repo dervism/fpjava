@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Left scan that returns intermediate accumulator values.
+ */
 public class Scanl<A, B> implements F3<F2<? super B, ? super A, ? extends B>, B, Iterable<A>, Iterable<B>> {
 
     private static final Scanl<?, ?> INSTANCE = new Scanl<>();

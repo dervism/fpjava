@@ -5,6 +5,9 @@ import functions.fn.F2;
 import functions.fn.F3;
 import functions.iter.Iterables;
 
+/**
+ * Left fold over an iterable.
+ */
 public class Foldl<A, B> implements F3<F2<? super B, ? super A, ? extends B>, B, Iterable<A>, B> {
 
     private static final Foldl<?, ?> INSTANCE = new Foldl<>();

@@ -13,7 +13,7 @@ public class GenericApplicative<T> implements Applicative<T, GenericApplicative<
     }
 
     @Override
-    public <B> GenericApplicative<B> fmap(Function<T, B> f) {
+    public <B> GenericApplicative<B> fmap(Function<? super T, ? extends B> f) {
         return pure(f.apply(t));
     }
 

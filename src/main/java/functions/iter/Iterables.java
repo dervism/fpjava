@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+/**
+ * Stream and list helpers for iterable-based functions.
+ */
 public final class Iterables {
 
     private Iterables() {}

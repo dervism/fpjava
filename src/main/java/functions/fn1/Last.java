@@ -3,6 +3,9 @@ package functions.fn1;
 import functions.fn.F1;
 import functions.iter.Iterables;
 
+/**
+ * Returns the last element; throws if the iterable is empty.
+ */
 public class Last<A> implements F1<Iterable<A>, A> {
 
     private static final Last<?> INSTANCE = new Last<>();

@@ -4,6 +4,9 @@ import functions.fn.F1;
 import functions.iter.Iterables;
 import monads.maybe.Maybe;
 
+/**
+ * Total variant of head that returns Maybe.
+ */
 public class MaybeHead<A> implements F1<Iterable<A>, Maybe<A>> {
 
     private static final MaybeHead<?> INSTANCE = new MaybeHead<>();

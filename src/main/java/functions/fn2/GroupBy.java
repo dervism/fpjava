@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Groups adjacent elements using the provided equality predicate.
+ */
 public class GroupBy<A> implements F2<F2<? super A, ? super A, ? extends Boolean>, Iterable<A>, Iterable<Iterable<A>>> {
 
     private static final GroupBy<?> INSTANCE = new GroupBy<>();

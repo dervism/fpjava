@@ -8,6 +8,9 @@ import functions.iter.Iterables;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Drops the first n elements from an iterable.
+ */
 public class Drop<A> implements F2<Integer, Iterable<A>, Iterable<A>> {
 
     private static final Drop<?> INSTANCE = new Drop<>();

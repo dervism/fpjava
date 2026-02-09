@@ -7,6 +7,9 @@ import functions.iter.Iterables;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Maps each element to an iterable and concatenates the results.
+ */
 public class ConcatMap<A, B> implements F2<F1<? super A, ? extends Iterable<B>>, Iterable<A>, Iterable<B>> {
 
     private static final ConcatMap<?, ?> INSTANCE = new ConcatMap<>();

@@ -3,6 +3,9 @@ package functions.fn1;
 import functions.fn.F1;
 import functions.iter.Iterables;
 
+/**
+ * Returns all elements except the first; throws if empty.
+ */
 public class Tail<A> implements F1<Iterable<A>, Iterable<A>> {
 
     private static final Tail<?> INSTANCE = new Tail<>();

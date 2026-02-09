@@ -1,8 +1,7 @@
 package functions.fn1;
 
 import functions.fn.F1;
-
-import java.util.stream.StreamSupport;
+import functions.iter.Iterables;
 
 public class Distinct<A> implements F1<Iterable<A>, Iterable<A>> {
 
@@ -11,8 +10,7 @@ public class Distinct<A> implements F1<Iterable<A>, Iterable<A>> {
 
     @Override
     public Iterable<A> checkedApply(Iterable<A> as) throws Throwable {
-        return StreamSupport
-                .stream(as.spliterator(), false)
+        return Iterables.stream(as)
                 .distinct()
                 .toList();
     }

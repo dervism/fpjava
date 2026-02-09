@@ -2,8 +2,7 @@ package functions.fn2;
 
 import functions.fn.F1;
 import functions.fn.F2;
-
-import java.util.stream.StreamSupport;
+import functions.iter.Iterables;
 
 public class Filter<A> implements F2<F1<? super A, ? extends Boolean>, Iterable<A>, Iterable<A>> {
 
@@ -11,8 +10,7 @@ public class Filter<A> implements F2<F1<? super A, ? extends Boolean>, Iterable<
 
     @Override
     public Iterable<A> checkedApply(F1<? super A, ? extends Boolean> f1, Iterable<A> as) {
-        return StreamSupport
-                .stream(as.spliterator(), false)
+        return Iterables.stream(as)
                 .filter(f1::apply)
                 .toList();
     }

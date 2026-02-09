@@ -1,7 +1,7 @@
 package monads.types;
 
-import examples.example_6.applicatives.GenericApplicative;
-import examples.example_6.applicatives.ListApplicative;
+import examples.example_6_monads.applicatives.GenericApplicative;
+import examples.example_6_monads.applicatives.ListApplicative;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

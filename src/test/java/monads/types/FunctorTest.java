@@ -1,6 +1,6 @@
 package monads.types;
 
-import examples.example_6.functors.GenericFunctor;
+import examples.example_6_monads.functors.GenericFunctor;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;

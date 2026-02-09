@@ -1,4 +1,4 @@
-package examples.example_6.applicatives;
+package examples.example_6_monads.applicatives;
 
 import org.junit.jupiter.api.Test;
 

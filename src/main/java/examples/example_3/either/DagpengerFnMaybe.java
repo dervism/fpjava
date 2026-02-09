@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public interface DagpengerFnMaybe extends Function<List<Double>, Maybe<Double>> {
-    int G = 130160;
+    int G = 118620;
     double daysPrYear = 260D;
 
     DoubleFunction<Predicate<Number>> aboveOrEqFn = g -> v -> v.doubleValue() >= g;
